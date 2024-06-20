@@ -1,0 +1,234 @@
+<div class="sidebar bg-white">
+  <ul class="nav-list d-flex flex-column">
+    <li>
+      <a href="#">
+        <i class="bi bi-grid fs-4 text-dark"></i>
+        <span class="links_name text-dark">Dashboard</span>
+      </a>
+      <span class="tooltip">Dashboard</span>
+    </li>
+    <li>
+      <a href="#">
+        <i class="bi bi-truck fs-4 text-dark"></i>
+        <span class="links_name text-dark">Fleet Manageemnt</span>
+      </a>
+      <span class="tooltip">Fleet Manageemnt</span>
+    </li>
+    <li>
+      <a href="#">
+        <i class="bi bi-gear fs-4 text-dark"></i>
+        <span class="links_name text-dark">Sittings</span>
+      </a>
+      <span class="tooltip">Sittings</span>
+    </li>
+    <li>
+      <a href="#">
+        <i class="bi bi-graph-up-arrow fs-4 text-dark"></i>
+        <span class="links_name text-dark">Reports</span>
+      </a>
+      <span class="tooltip">Reports</span>
+    </li>
+
+    <div class="logo-details mt-auto">
+      <i class="bi bi-chevron-right" id="btn"></i>
+    </div>
+  </ul>
+</div>
+<section class="home-section bg-white m-3 rounded-3 p-4">
+  <div class="d-flex justify-content-between">
+    <p class="fs-3 text-black-50">Car fleet</p>
+    <div class="d-flex gap-2">
+      <button class="btn bg-secondary-subtle py-1 px-2 rounded-3">
+        <i class="bi bi-view-stacked"></i>
+      </button>
+      <button class="btn bg-secondary-subtle py-1 px-2 rounded-3">
+        <i class="bi bi-images"></i>
+      </button>
+      <button class="btn bg-secondary-subtle py-1 px-2 rounded-3">
+        Excel
+        <i class="bi bi-download"></i>
+      </button>
+    </div>
+  </div>
+  <span class="p-input-icon-left d-block w-100 p-4 position-relative">
+    <i
+      class="bi bi-search position-absolute opacity-25 fs-4 top-50 translate-middle"
+      style="left: 50px"
+    ></i>
+    <input
+      type="text"
+      pInputText
+      class="w-100 p-2 ps-5 rounded-3"
+      placeholder="What are you looking for"
+      [(ngModel)]="value"
+    />
+    <button
+    (click)="toggleCollapse()"
+      class="btn position-absolute p-2 border-start border-2"
+      style="right: 26px; top: 20px"
+    >
+      <i class="bi bi-ui-radios fs-5"></i>
+    </button>
+  </span>
+  <!-- ----------------------------------------------- -->
+  <div [@collapse]="isOpen ? 'open' : 'closed'" >
+    <div class="d-flex gap-2 justify-content-evenly align-content-center">
+      <div class="w-100">
+        <p>cars</p>
+        <p-dropdown
+          [options]="cities"
+          optionLabel="name"
+          styleClass="w-100 p-0 rounded-4"
+          placeholder="All cars"
+        ></p-dropdown>
+      </div>
+      <div class="w-100">
+        <p>Branch</p>
+        <p-dropdown
+          [options]="cities"
+          optionLabel="name"
+          styleClass="w-100 p-0 rounded-4"
+          placeholder="All cars"
+        ></p-dropdown>
+      </div>
+      <div class="w-100">
+        <p>Location</p>
+        <p-dropdown
+          [options]="cities"
+          optionLabel="name"
+          styleClass="w-100 p-0 rounded-4"
+          placeholder="All cars"
+        ></p-dropdown>
+      </div>
+    </div>
+    <div class="d-flex mt-4">
+      <div class="w-100">
+        <p>Engine</p>
+        <div class="d-flex gap-2">
+          <div
+            class="d-flex align-items-center border p-2 rounded-3 d-inline-flex"
+          >
+            <p-radioButton
+              inputId="all"
+              [(ngModel)]="engine"
+              name="engine"
+              value="all"
+            ></p-radioButton>
+            <label for="all" class="ms-2">All</label>
+          </div>
+          <div
+            class="d-flex align-items-center border p-2 rounded-3 d-inline-flex"
+          >
+            <p-radioButton
+              inputId="running"
+              name="engine"
+              value="running"
+              [(ngModel)]="engine"
+            ></p-radioButton>
+            <label for="running" class="ms-2">Running</label>
+          </div>
+          <div
+            class="d-flex align-items-center border p-2 rounded-3 d-inline-flex"
+          >
+            <p-radioButton
+              inputId="non-running"
+              name="engine"
+              [(ngModel)]="engine"
+              value="non-running"
+            ></p-radioButton>
+            <label for="non-running" class="ms-2">Non-running</label>
+          </div>
+        </div>
+      </div>
+      <div class="w-100">
+        <p>Rule breaking alert</p>
+        <div class="d-flex gap-2">
+          <div
+            class="d-flex align-items-center border p-2 rounded-3 d-inline-flex"
+          >
+            <p-radioButton
+              inputId="all"
+              [(ngModel)]="rule"
+              name="rule"
+              value="all"
+            ></p-radioButton>
+            <label for="all" class="ms-2">All</label>
+          </div>
+          <div
+            class="d-flex align-items-center border p-2 rounded-3 d-inline-flex"
+          >
+            <p-radioButton
+              inputId="alert"
+              name="rule"
+              value="alert"
+              [(ngModel)]="rule"
+            ></p-radioButton>
+            <label for="running" class="ms-2">Alert</label>
+          </div>
+          <div
+            class="d-flex align-items-center border p-2 rounded-3 d-inline-flex"
+          >
+            <p-radioButton
+              inputId="non-running"
+              name="rule"
+              [(ngModel)]="rule"
+              value="non-running"
+            ></p-radioButton>
+            <label for="non-running" class="ms-2">Non-running</label>
+          </div>
+        </div>
+      </div>
+      <div class="w-100">
+        <p>Rental Status</p>
+        <div class="d-flex gap-2">
+          <div
+            class="d-flex align-items-center border p-2 rounded-3 d-inline-flex"
+          >
+            <p-checkbox
+              name="rental"
+              value="in-branch"
+              [(ngModel)]="rental"
+              inputId="ny"
+            ></p-checkbox>
+            <label for="ny" class="ms-2">In branch</label>
+          </div>
+
+          <div
+            class="d-flex align-items-center border p-2 rounded-3 d-inline-flex"
+          >
+            <p-checkbox
+              name="rental"
+              value="expiration"
+              [(ngModel)]="rental"
+              inputId="sf"
+            ></p-checkbox>
+            <label for="sf" class="ms-2">Expiration</label>
+          </div>
+
+          <div
+            class="d-flex align-items-center border p-2 rounded-3 d-inline-flex"
+          >
+            <p-checkbox
+              name="rental"
+              value="rented"
+              [(ngModel)]="rental"
+              inputId="la"
+            ></p-checkbox>
+            <label for="la" class="ms-2">Rented</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex mt-4 gap-3">
+      <button class="btn btn-lg btn-primary px-3 py-2">
+        <i class="bi bi-search"></i>
+        Search
+      </button>
+      <button class="btn btn-lg btn-outline-primary px-3 py-2">
+        <i class="bi bi-trash3"></i>
+        Clean
+      </button>
+    </div>
+  </div>
+  <app-table></app-table>
+</section>

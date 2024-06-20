@@ -1,0 +1,27 @@
+<p-table [value]="cars" [tableStyle]="{'min-width': '60rem'}">
+  <ng-template pTemplate="header">
+      <tr>
+          <th pSortableColumn="no" style="width:20%">no <p-sortIcon field="no"></p-sortIcon></th>
+          <th pSortableColumn="Car name" style="width:20%">Car name <p-sortIcon field="Car name"></p-sortIcon></th>
+          <th pSortableColumn="Plate" style="width:20%">Plate <p-sortIcon field="Plate"></p-sortIcon></th>
+          <th pSortableColumn="Branch" style="width:20%">Branch <p-sortIcon field="Branch"></p-sortIcon></th>
+          <th pSortableColumn="Rental status" style="width:20%">Rental status <p-sortIcon field="Rental status"></p-sortIcon></th>
+          <th pSortableColumn="Speed" style="width:20%">Speed <p-sortIcon field="Speed"></p-sortIcon></th>
+          <th pSortableColumn="Location" style="width:20%">Location <p-sortIcon field="Location"></p-sortIcon></th>
+          <th pSortableColumn="Display" style="width:20%">Display <p-sortIcon field="Display"></p-sortIcon></th>
+          <th pSortableColumn="Options" style="width:20%">Options <p-sortIcon field="Options"></p-sortIcon></th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-car>
+      <tr>
+          <td>{{car.id}}</td>
+          <td>{{car.carName}}</td>
+          <td>{{car.plate}}</td>
+          <td>{{car.branch}}</td>
+          <td>{{car.status}}</td>
+          <td>{{car.speed}}</td>
+          <td>{{car.location}}</td>
+          <td>{{car.display}}</td>
+      </tr>
+  </ng-template>
+</p-table>
