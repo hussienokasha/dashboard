@@ -14,6 +14,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { TableComponent } from './table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { TableModule } from 'primeng/table';
     RadioButtonModule,
     CheckboxModule,
     MatTableModule,
-    TableModule
+    TableModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,27 +1,57 @@
-<p-table [value]="cars" [tableStyle]="{'min-width': '60rem'}">
-  <ng-template pTemplate="header">
+<div class="border table-container rounded-3 mt-4">
+  <p-table
+    [value]="cars"
+    [paginator]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '70rem' }"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    (onPage)="pageChange($event)"
+    [rowsPerPageOptions]="[10, 25, 50]"
+
+  >
+    <ng-template pTemplate="header">
       <tr>
-          <th pSortableColumn="no" style="width:20%">no <p-sortIcon field="no"></p-sortIcon></th>
-          <th pSortableColumn="Car name" style="width:20%">Car name <p-sortIcon field="Car name"></p-sortIcon></th>
-          <th pSortableColumn="Plate" style="width:20%">Plate <p-sortIcon field="Plate"></p-sortIcon></th>
-          <th pSortableColumn="Branch" style="width:20%">Branch <p-sortIcon field="Branch"></p-sortIcon></th>
-          <th pSortableColumn="Rental status" style="width:20%">Rental status <p-sortIcon field="Rental status"></p-sortIcon></th>
-          <th pSortableColumn="Speed" style="width:20%">Speed <p-sortIcon field="Speed"></p-sortIcon></th>
-          <th pSortableColumn="Location" style="width:20%">Location <p-sortIcon field="Location"></p-sortIcon></th>
-          <th pSortableColumn="Display" style="width:20%">Display <p-sortIcon field="Display"></p-sortIcon></th>
-          <th pSortableColumn="Options" style="width:20%">Options <p-sortIcon field="Options"></p-sortIcon></th>
+        <th class="text-black-50">no</th>
+        <th class="text-black-50">Car name</th>
+        <th class="text-black-50">Plate</th>
+        <th class="text-black-50">Branch</th>
+        <th class="text-black-50">Rental status</th>
+        <th class="text-black-50">Speed</th>
+        <th class="text-black-50">Location</th>
+        <th class="text-black-50">Display</th>
+        <th class="text-black-50">Options</th>
       </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-car>
+    </ng-template>
+    <ng-template pTemplate="body" let-car>
       <tr>
-          <td>{{car.id}}</td>
-          <td>{{car.carName}}</td>
-          <td>{{car.plate}}</td>
-          <td>{{car.branch}}</td>
-          <td>{{car.status}}</td>
-          <td>{{car.speed}}</td>
-          <td>{{car.location}}</td>
-          <td>{{car.display}}</td>
+        <td>{{ car.id }}</td>
+        <td><img src="assets/car.png" alt="" /> {{ car.carName }}</td>
+        <td>{{ car.plate }}</td>
+        <td>{{ car.branch }}</td>
+        <td>
+          <p
+            class="text-success bg-success-subtle m-0 d-inline-block px-2 py-1 rounded-2 fs-6"
+          >
+            {{ car.status }}
+          </p>
+        </td>
+        <td>{{ car.speed }} Km/h</td>
+        <td>{{ car.location }}</td>
+
+        <td>
+          <i class="bi bi-wifi me-2 fs-5 text-success"></i>
+          <i class="bi bi-ev-front text-danger fs-5"></i>
+        </td>
+        <td>
+          <i
+            class="bi bi-arrow-counterclockwise fs-4 bg-body-secondary p-1 rounded-3"
+          ></i>
+          <button class="btn btn-outline-primary ms-3 mb-2 rounded-3">
+            <i class="bi bi-eye"></i> View
+          </button>
+        </td>
       </tr>
-  </ng-template>
-</p-table>
+    </ng-template>
+  </p-table>
+</div>
